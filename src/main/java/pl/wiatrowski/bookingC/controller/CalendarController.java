@@ -1,6 +1,5 @@
 package pl.wiatrowski.bookingC.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.wiatrowski.bookingC.model.Calendar;
@@ -26,7 +25,12 @@ public class CalendarController {
 
     @PostMapping
     public Calendar addDate(@RequestBody Calendar calendar){
-        return calendarService.saveAll(calendar);
+        return calendarService.save(calendar);
+    }
+
+    @DeleteMapping
+    public void deleteDate(@RequestParam Long index) {
+        calendarService.deleteById(index);
     }
 
 }

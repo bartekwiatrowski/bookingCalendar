@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.wiatrowski.bookingC.model.Calendar;
 import pl.wiatrowski.bookingC.repository.CalendarRepo;
-
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 public class CalendarService {
@@ -23,16 +21,27 @@ public class CalendarService {
         return calendarRepo.findAll();
     }
 
-
-    public Calendar saveAll(Calendar calendar) {
+//add function with a basic verification
+    public Calendar save(Calendar calendar) {
 
         if (calendar.getDate().isAfter(LocalDate.now()) && !calendarRepo.existsByDate(calendar.getDate() ) ) {
-
             calendarRepo.save(calendar);
 
-            //calendar.setDate(calendar.getDate().plusDays(calendar.getRecurve()));
-            //calendarRepo.save(calendar);
+            // unused functionality to add multiple dates by parameters provides by user
+
+/*            List<Calendar> calendars = new ArrayList<>();
+            calendars.add(calendar);
+                for (int i = 0; i <= calendar.getPeriod(); i++)
+            calendars.add(calendar.setDate(calendar.getDate().plusDays(calendar.getRecurve()))));
+            calendarRepo.saveAll(calendars);
+*/
         }
+
+
          return calendar;
+    }
+
+    public void deleteById(Long id) {
+        calendarRepo.deleteById(id);
     }
 }

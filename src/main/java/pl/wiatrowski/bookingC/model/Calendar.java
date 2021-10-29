@@ -10,15 +10,11 @@ import java.time.LocalDate;
 @Entity
 public class Calendar {
 
-
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
     private LocalDate date;
-
-
 
     public Calendar() {
     }
@@ -45,14 +41,8 @@ public class Calendar {
     }
 
 
-
-
-
-
-
-
-
- // testing
+    //unused parameters for adding multiple records to database
+/*
     private long recurve;
 
     private long period;
@@ -79,5 +69,7 @@ public class Calendar {
     public void setPeriod(int period) {
         this.period = period;
     }
+
+ */
 
 }
